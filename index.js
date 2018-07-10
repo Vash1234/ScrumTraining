@@ -6,54 +6,56 @@ http.createServer(function (req, res) {
  res.writeHead(200, {'Content-Type': 'text/html'}); // http header
 var url = req.url;
 var method = req.method;
- if(url ==='/register'){
+
+ if(url === '/register'){
     if(method === 'POST'){
-	// place code here for hashing, checking for uniqueness
-	resp.write('hey');
-        resp.end();
+ // place code here for hashing, checking for uniqueness
+        res.end();
     }
     else {
-    fs.readFile("html/register.html", function (error, pgResp) {
+    fs.readFile("html/registration.html", function (error, pgResp) {
             if (error) {
-                resp.writeHead(404);
-                resp.write('Contents you are looking are Not Found');
+                res.writeHead(404);
+                res.write('Contents you are looking are Not Found');
             } else {
-                resp.writeHead(200, { 'Content-Type': 'text/html' });
-                resp.write(pgResp);
+                res.writeHead(200, { 'Content-Type': 'text/html' });
+                res.write(pgResp);
             }
             
-            resp.end();
+            res.end();
         });
      }
  }else if(url === '/profile'){
     fs.readFile("html/profile.html", function (error, pgResp) {
             if (error) {
-                resp.writeHead(404);
-                resp.write('Contents you are looking are Not Found');
+                res.writeHead(404);
+                res.write('Contents you are looking are Not Found');
             } else {
-                resp.writeHead(200, { 'Content-Type': 'text/html' });
-                resp.write(pgResp);
+                res.writeHead(200, { 'Content-Type': 'text/html' });
+                res.write(pgResp);
             }
             
-            resp.end();
+            res.end();
         });
  }else{
     if(method === 'POST'){
-	// place code here for authenticating
-	resp.write('hey');
-        resp.end();
+ // place code here for authenticating
+ console.log('hey');
+ res.writeHead(200, { 'Content-Type': 'text/html' });
+ res.write('hey');
+        res.end();
     }
     else {
     fs.readFile("html/login.html", function (error, pgResp) {
             if (error) {
-                resp.writeHead(404);
-                resp.write('Contents you are looking are Not Found');
+                res.writeHead(404);
+                res.write('Contents you are looking are Not Found');
             } else {
-                resp.writeHead(200, { 'Content-Type': 'text/html' });
-                resp.write(pgResp);
+                res.writeHead(200, { 'Content-Type': 'text/html' });
+                res.write(pgResp);
             }
             
-            resp.end();
+            res.end();
         });
     }
  }
